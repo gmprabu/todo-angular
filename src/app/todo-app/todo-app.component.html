@@ -1,25 +1,29 @@
 
-    <h1>Todos</h1>
+    <h1>Add Task</h1>
 
     <div class="row">
       <div class= "col-md-6">
-        <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+        <span class="task-todo" >Character left: {{250 - newTodo.title.length}}</span>
+        
+        <textarea class="new-todo" placeholder="What needs to be done?(Max 250 characters)" (keypress)="valuechange()" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
 
+        </textarea>
         <div *ngIf="error" class="alert alert-warning" role="alert">
             Duplicate task.
           </div>
+          
       </div> 
     </div>
   
 
     <div class="row">
       <div class="col-md-6">
-        <div class="mycontent-left">
+        <div class="mycontent-left" *ngIf="todoTodo?.length > 0">
 
          <h1>Tasks to do</h1> 
          <ul class="list-group">
             <li *ngFor="let todo of todoTodo" class="list-group-item">
-                <label >{{todo.title}}</label> 
+                <label class="task-todo" title="{{todo.title}}">{{todo.title}}</label> 
                 <span class="badge"><a href="#" (click)="removeTodo(todo)">Remove</a></span>
               <span class="badge"><a href="#" (click)="makeComplete(todo)">Mark Complete</a></span>
             </li>
@@ -28,12 +32,12 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="mycontent-right">
+        <div class="mycontent-right" *ngIf="todosCompleted?.length > 0">
            <h1>Tasks Completed</h1> 
 
            <ul class="list-group">
               <li *ngFor="let todo of todosCompleted" class="list-group-item">
-                  <label >{{todo.title}}</label>
+                  <label class="task-complete" title="{{todo.title}}">{{todo.title}}</label>
                   <span class="badge"><a href="#" (click)="removeTodo(todo)">Remove</a></span>
               </li>
   

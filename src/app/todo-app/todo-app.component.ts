@@ -25,21 +25,28 @@ export class TodoAppComponent implements OnInit  {
   constructor(private todoService: TodoService) {
   }
 
+  valuechange(){
+    this.error= false;
+  }
+
   ngOnInit(): void {
      this.getAllTodo();
   }
 
   addTodo() {
-    this.todoService.addTodo(this.newTodo).subscribe((data) => {
-      this.getAllTodo();
-      this.newTodo = new Todo();
-    }, (err) => {
-       if(err.error.exception == "org.springframework.dao.DataIntegrityViolationException"){
-        this.error = true;
+    if(this.newTodo.title != "" || this.newTodo.title .length <=250){
+      console.log(this.newTodo.title.length);
+      this.todoService.addTodo(this.newTodo).subscribe((data) => {
+        this.getAllTodo();
+        this.newTodo = new Todo();
+      }, (err) => {
+        if(err.error.exception == "org.springframework.dao.DataIntegrityViolationException"){
+          this.error = true;
 
-       }
-    })
+        }
+      })
   }
+}
 
   removeTodo(todo : Todo){
     this.todoService.removeTodo(todo).subscribe(() =>

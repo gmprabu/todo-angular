@@ -1,6 +1,6 @@
 .new-todo {
     width: 100%;
-    height: 38px;
+    height: 80px;
 }
 .badge {
 background-color: #ffffff !important;
@@ -10,4 +10,17 @@ ul > li:hover {
 }
 ul > li:hover > a {
     background-color: #f0f0f5 !important ; 
+}
+.task-complete {
+   color: green;
+   
+}
+li {
+    list-style-position:inside;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+  }
+.task-todo {
+    color: #9c1916;
 }
