@@ -1,0 +1,13 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 38px;
+    background-color: #222;
+  }
+
+  .text-muted {
+      color: white;
+      margin: 15px !important;
+  }
